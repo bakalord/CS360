@@ -54,10 +54,12 @@ router.patch('/tasks/:id', async(req, res) => {
     }
 
     try {
-        // sets user info to the req.body which is whatever is sent over from the user's end
-        // new: true returns the new user
-        //runValidators: true ensures that validators for user object are run
-        const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+        const task = await Task.findById(req.params.id)
+
+        //updates each property with newly supplied property
+        updates.forEach((update) => task[update] = req.body[update])
+        await task.save()
+
 
         if (!task) {
             //no user for given ID, return 404 error

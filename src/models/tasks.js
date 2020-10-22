@@ -12,4 +12,5 @@ const Task = mongoose.model('Tasks', {
         default: false
     }
 })
+
 module.exports = Task
