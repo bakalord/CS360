@@ -1,22 +1,8 @@
 const express = require('express')
-require('./db/mongoose')
-const User = require('./models/users')
-const Task = require('./models/tasks')
-const userRouter = require('./routers/user')
+const Task = require('../models/tasks')
+const router = new express.Router()
 
-const app = express()
-const port = process.env.PORT || 3000
-
-/*
-this tells the app to automatically parse incoming JSON to an object
-*/
-app.use(express.json())
-
-app.use(userRouter)
-
-
-
-app.post('/tasks', async(req, res) => {
+router.post('/tasks', async(req, res) => {
     const task = new Task(req.body)
 
     try {
@@ -27,7 +13,7 @@ app.post('/tasks', async(req, res) => {
     }
 })
 
-app.get('/tasks', async(req, res) => {
+router.get('/tasks', async(req, res) => {
 
     try {
         const tasks = await Task.find({})
@@ -38,7 +24,7 @@ app.get('/tasks', async(req, res) => {
 })
 
 // this is the same as its '/user/:id' counterpart except it gets a task by id
-app.get('/tasks/:id', async(req, res) => {
+router.get('/tasks/:id', async(req, res) => {
     const _id = req.params.id
 
     try {
@@ -54,7 +40,7 @@ app.get('/tasks/:id', async(req, res) => {
     }
 })
 
-app.patch('/tasks/:id', async(req, res) => {
+router.patch('/tasks/:id', async(req, res) => {
     //returns array of strings of object properties
     const updates = Object.keys(req.body)
         //array of object properties the user can update
@@ -84,7 +70,7 @@ app.patch('/tasks/:id', async(req, res) => {
     }
 })
 
-app.delete('/tasks/:id', async(req, res) => {
+router.delete('/tasks/:id', async(req, res) => {
     try {
         const task = await Task.findByIdAndDelete(req.params.id)
 
@@ -98,6 +84,4 @@ app.delete('/tasks/:id', async(req, res) => {
     }
 })
 
-app.listen(port, () => {
-    console.log('Server is up on port ' + port)
-})
+module.exports = router
