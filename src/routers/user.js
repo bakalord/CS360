@@ -71,10 +71,15 @@ router.patch('/users/:id', async(req, res) => {
     }
 
     try {
+        const user = await User.findById(req.params.id)
+
+        updates.forEach((update) => user[update] = req.body[update])
+        await user.save()
+
         // sets user info to the req.body which is whatever is sent over from the user's end
         // new: true returns the new user
         //runValidators: true ensures that validators for user object are run
-        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+        // const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
 
         if (!user) {
             //no user for given ID, return 404 error
