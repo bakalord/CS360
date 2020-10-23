@@ -20,7 +20,7 @@ router.post('/users', async(req, res) => {
     }
 })
 
-// logging in users
+// log in
 router.post('/users/login', async(req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password)
@@ -28,6 +28,34 @@ router.post('/users/login', async(req, res) => {
         res.send({ user, token })
     } catch (e) {
         res.status(400).send()
+    }
+})
+
+//log out
+router.post('/users/logout', auth, async(req, res) => {
+    try {
+        //removes token from the token array
+        req.user.tokens = req.user.tokens.filter((token) => {
+            //walk array of tokens
+            //if token in array not equal to token logging out, keep it
+            return token.token !== req.token
+        })
+        await req.user.save()
+
+        res.send()
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+//logout all sessions by emptying the token array
+router.post('/users/logoutAll', auth, async(req, res) => {
+    try {
+        req.user.tokens = []
+        await req.user.save()
+        res.send()
+    } catch (e) {
+        res.status(500).send()
     }
 })
 

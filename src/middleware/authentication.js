@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/users')
 
+//authenticate user routes
 const auth = async(req, res, next) => {
     try {
         //look for header
@@ -14,6 +15,7 @@ const auth = async(req, res, next) => {
             throw new Error()
         }
 
+        req.token = token
         req.user = user
         next()
     } catch (e) {
