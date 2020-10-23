@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -10,6 +11,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true,
         required: true,
         trim: true,
         lowercase: true,
@@ -29,9 +31,48 @@ const userSchema = new mongoose.Schema({
                 throw new Error('Password cannot be "password"')
             }
         }
-    }
+    },
+    //array of tokens
+    //this is a way of tracking when a user logs in or logs out on their device
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 })
 
+//methods keyword makes this method accessible on an instance of the model (a specific user)
+userSchema.methods.generateAuthToken = async function() {
+    const user = this
+    const token = jwt.sign({ _id: user._id.toString() }, 'seriesofcharacters')
+
+    user.tokens = user.tokens.concat({ token })
+    await user.save()
+
+    return token
+}
+
+// statics keyword makes this method accessible on the model
+userSchema.statics.findByCredentials = async(email, password) => {
+    const user = await User.findOne({ email })
+
+    // email not found
+    if (!user) {
+        throw new Error('Unable to login')
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password)
+
+    //password did not match
+    if (!isMatch) {
+        throw new Error('Unable to login')
+    }
+
+    return user
+}
+
+//Hash the plain text password before saving
 userSchema.pre('save', async function(next) {
     const user = this
 

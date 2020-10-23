@@ -8,6 +8,20 @@ const taskRouter = require('./routers/task')
 const app = express()
 const port = process.env.PORT || 3000
 
+//fn that's going to run between the request coming to the server
+//and the route handler actually running
+// app.use((req, res, next) => {
+//     // do some work when request is made, and then ...
+//     if (req.method === 'GET') {
+//         res.send('GET requests are disabled')
+//     } else {
+//         next()
+//     }
+
+//     //... run the route handler
+//     next()
+// })
+
 /*
 this tells the app to automatically parse incoming JSON to an object
 */

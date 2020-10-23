@@ -1,10 +1,10 @@
 const express = require('express')
 const User = require('../models/users')
 const router = new express.Router()
+const auth = require('../middleware/authentication')
 
 /*
-post() method
-request from front-end to create data on back-end
+this function is for signing up users
 @param req: the data to be posted
 @param res: the response, either the successfully posted data, or an error
 */
@@ -13,27 +13,35 @@ router.post('/users', async(req, res) => {
 
     try {
         await user.save()
-        res.status(201).send(user)
+        const token = await user.generateAuthToken()
+        res.send({ user, token })
     } catch (e) {
         res.status(400).send(e)
     }
 })
 
+// logging in users
+router.post('/users/login', async(req, res) => {
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        const token = await user.generateAuthToken()
+        res.send({ user, token })
+    } catch (e) {
+        res.status(400).send()
+    }
+})
+
 /*
-get() method
-request from front-end to 'get' data from back-end
+this function is for getting user profile
+@param '/users/me' the route that calls this get
+@param auth: run the authentication fn before running the callback fn
+callback fn:
 @param req: a request for data to be posted
 @param res: the response, either the data requested or an error
 */
 
-router.get('/users', async(req, res) => {
-    // NULL object passed in param means the entire user table
-    try {
-        const users = await User.find({})
-        res.send(users)
-    } catch {
-        res.status(500).send()
-    }
+router.get('/users/me', auth, async(req, res) => {
+    res.send(req.user)
 })
 
 // this get() will 'get' a user based on the id given
