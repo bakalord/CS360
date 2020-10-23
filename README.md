@@ -1,6 +1,2 @@
 # CS360
-Project of CS 360 of WCSU
-
-ND test edit
-HF test edit
-KS test edit
+This is a reminder and task-manager application created by Nick DeMarco, Hudson Fleurimond, Krishan Singh and Henry Lima of Western Connecticut State University's 2020 CS360 class. In this application, the user will be able to write, read, edit, and delete any ideas or thoughts they may have. They can also create tasks for the week and set goals for the percentage of tasks completed during a set span of time.
