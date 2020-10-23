@@ -19,6 +19,15 @@ router.post('/users', async(req, res) => {
     }
 })
 
+router.post('/users/login', async(req, res) => {
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        res.send(user)
+    } catch (e) {
+        res.status(400).send()
+    }
+})
+
 /*
 get() method
 request from front-end to 'get' data from back-end
