@@ -42,6 +42,16 @@ const userSchema = new mongoose.Schema({
     }]
 })
 
+/*
+ * This is essentially: show me all tasks where user id (_id) = task owner (owner)
+ * or in SQL: SELECT * FROM Tasks WHERE owner = <a user ID>
+ */
+userSchema.virtual('tasks', {
+    ref: 'Tasks',
+    localField: '_id',
+    foreignField: 'owner'
+})
+
 //methods keyword makes this method accessible on an instance of the model (a specific user)
 userSchema.methods.generateAuthToken = async function() {
     const user = this
