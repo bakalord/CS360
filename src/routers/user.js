@@ -3,11 +3,7 @@ const User = require('../models/users')
 const router = new express.Router()
 const auth = require('../middleware/authentication')
 
-/*
-this function is for signing up users
-@param req: the data to be posted
-@param res: the response, either the successfully posted data, or an error
-*/
+//sign up user
 router.post('/users', async(req, res) => {
     const user = new User(req.body)
 
@@ -59,22 +55,13 @@ router.post('/users/logoutAll', auth, async(req, res) => {
     }
 })
 
-/*
-this function is for getting user profile
-@param '/users/me' the route that calls this get
-@param auth: run the authentication fn before running the callback fn
-callback fn:
-@param req: a request for data to be posted
-@param res: the response, either the data requested or an error
-*/
-
+//get user profile information
 router.get('/users/me', auth, async(req, res) => {
     res.send(req.user)
 })
 
-/*
- app.patch() is for updating a specific resource
-*/
+
+//update user info
 router.patch('/users/:id', async(req, res) => {
     //returns array of strings of object properties
     const updates = Object.keys(req.body)
@@ -106,6 +93,7 @@ router.patch('/users/:id', async(req, res) => {
     }
 })
 
+//delete user
 router.delete('/users/:id', async(req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id)
