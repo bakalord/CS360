@@ -53,6 +53,18 @@ userSchema.methods.generateAuthToken = async function() {
     return token
 }
 
+//@override default stringification behavior
+//returns user object without private information
+userSchema.methods.toJSON = function() {
+    const user = this
+    const userObject = user.toObject()
+
+    delete userObject.password
+    delete userObject.tokens
+
+    return userObject
+}
+
 // statics keyword makes this method accessible on the model
 userSchema.statics.findByCredentials = async(email, password) => {
     const user = await User.findOne({ email })
