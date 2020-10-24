@@ -62,13 +62,16 @@ router.get('/users/me', auth, async(req, res) => {
 
 
 //update user info
-router.patch('/users/:id', async(req, res) => {
-    //returns array of strings of object properties
+router.patch('/users/me', auth, async(req, res) => {
+    //array of strings of object properties
+    //this is passed in from the front-end depending on what the user is trying to update
     const updates = Object.keys(req.body)
-        //array of object properties the user can update
+
+    //array of object properties the user is allowed to update
     const allowedUpdates = ['name', 'email', 'password']
-        //now we want to determine if every string in updates
-        // is an allowable update
+
+    //now we want to determine if every string in updates
+    // is an allowable update
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if (!isValidOperation) {
@@ -76,33 +79,20 @@ router.patch('/users/:id', async(req, res) => {
     }
 
     try {
-        const user = await User.findById(req.params.id)
-
-        //updates each property with newly supplied property
-        updates.forEach((update) => user[update] = req.body[update])
-        await user.save()
-
-        if (!user) {
-            //no user for given ID, return 404 error
-            return res.status(404).send()
-        }
-        // else send user
-        res.send(user)
+        //updates each property with newly value
+        updates.forEach((update) => req.user[update] = req.body[update])
+        await req.user.save()
+        res.send(req.user)
     } catch (e) {
         res.status(400).send(e);
     }
 })
 
 //delete user
-router.delete('/users/me', async(req, res) => {
+router.delete('/users/me', auth, async(req, res) => {
     try {
-        const user = await User.findByIdAndDelete(req.user._id)
-
-        if (!user) {
-            return res.status(404).send()
-        }
-
-        res.send(user)
+        await req.user.remove()
+        res.send(req.user)
     } catch (e) {
         res.status(500).send()
     }
