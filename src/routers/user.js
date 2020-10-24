@@ -72,24 +72,6 @@ router.get('/users/me', auth, async(req, res) => {
     res.send(req.user)
 })
 
-// this get() will 'get' a user based on the id given
-// the ':id' after users means whatever comes after users will be passed in JSON format as an id
-router.get('/users/:id', async(req, res) => {
-    const _id = req.params.id // this is the JSON id that was passed
-
-    try {
-        const user = await User.findById(_id)
-
-        if (!user) {
-            return res.status(404).send()
-        }
-
-        res.send(user)
-    } catch (e) {
-        res.status(500).send()
-    }
-})
-
 /*
  app.patch() is for updating a specific resource
 */
