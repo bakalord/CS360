@@ -2,7 +2,7 @@
 
 ### <a id="documentation-body"></a>
 
-![Hackolade image](/db-diagram/image1.png?raw="true")
+![Hackolade image](./db-diagram/image1.png?raw=true)
 
 MongoDB Physical Model
 ----------------------
