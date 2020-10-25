@@ -21,11 +21,23 @@ router.post('/tasks', auth, async(req, res) => {
 })
 
 //get all tasks
+//GET /tasks?sortBy=createdAt:asc
 router.get('/tasks', auth, async(req, res) => {
+    //empty object for only showing completed or incomplete tasks
     const match = {}
+        //empty object for sorting
+    const sort = {}
 
     if (req.query.completed) {
         match.completed = req.query.completed === 'true'
+    }
+
+    if (req.query.sortBy) {
+        //split sortBy query into two values (will eventually be object property and value)
+        const parts = req.query.sortBy.split(':')
+            //parts[0] becomes the name of a property on sort{}
+            //parts[1] determines the value of that property
+        sort[parts[0]] = parts[1] === 'desc' ? -1 : 1
     }
 
     try {
@@ -34,7 +46,8 @@ router.get('/tasks', auth, async(req, res) => {
             match,
             options: {
                 limit: parseInt(req.query.limit),
-                skip: parseInt(req.query.skip)
+                skip: parseInt(req.query.skip),
+                sort
             }
         }).execPopulate()
         res.send(req.user.tasks)
