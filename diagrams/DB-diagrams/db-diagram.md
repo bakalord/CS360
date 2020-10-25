@@ -8,11 +8,11 @@ MongoDB Physical Model
 
 #### Schema for:
 
-Model name: task-manager-api
+Model name: Task-Manager
 
-Author:
+Author: Nick DeMarco
 
-Version:
+Version: 1
 
 
 ### <a id="contents"></a>
@@ -32,19 +32,19 @@ Version:
 
 ##### 1\. Model
 
-##### 1.1 Model **New Model**
+##### 1.1 Model **Task-Manager**
 
-##### 1.1.1 **New Model** Entity Relationship Diagram
+##### 1.1.1 **Task-Manager** Entity Relationship Diagram
 
 ![Representative image](./db-diagram/image2.png?raw=true)
 
-##### 1.1.2 **New Model** Properties
+##### 1.1.2 **Task-Manager** Properties
 
 ##### 1.1.2.1 **Details** tab
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td><span>Model name</span></td><td>New Model</td></tr><tr><td><span>Technical name</span></td><td></td></tr><tr><td><span>Description</span></td><td><div class="docs-markdown"></div></td></tr><tr><td><span>Author</span></td><td></td></tr><tr><td><span>Version</span></td><td></td></tr><tr><td><span>DB vendor</span></td><td>MongoDB</td></tr><tr><td><span>DB version</span></td><td>v4.4</td></tr><tr><td><span>Comments</span></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td><span>Model name</span></td><td>Task-Manager</td></tr><tr><td><span>Technical name</span></td><td></td></tr><tr><td><span>Description</span></td><td><div class="docs-markdown"></div></td></tr><tr><td><span>Author</span></td><td></td></tr><tr><td><span>Version</span></td><td></td></tr><tr><td><span>DB vendor</span></td><td>MongoDB</td></tr><tr><td><span>DB version</span></td><td>v4.4</td></tr><tr><td><span>Comments</span></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 1.1.3 **New Model** DB Definitions
+##### 1.1.3 **Task-Manager** DB Definitions
 
 ### <a id="containers"></a>
 
