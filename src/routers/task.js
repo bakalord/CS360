@@ -21,8 +21,6 @@ router.post('/tasks', auth, async(req, res) => {
 })
 
 //get all tasks
-//GET /tasks?completed=true
-//GET /tasks?limit=10&skip=0
 router.get('/tasks', auth, async(req, res) => {
     const match = {}
 
@@ -66,10 +64,12 @@ router.get('/tasks/:id', auth, async(req, res) => {
 router.patch('/tasks/:id', auth, async(req, res) => {
     //returns array of strings of object properties
     const updates = Object.keys(req.body)
-        //array of object properties the user can update
+
+    //array of object properties the user can update
     const allowedUpdates = ['description', 'completed']
-        //now we want to determine if every string in updates
-        // is an allowable update
+
+    //now we want to determine if every string in updates
+    // is an allowable update
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if (!isValidOperation) {
