@@ -6,9 +6,11 @@ const auth = async(req, res, next) => {
     try {
         //look for header
         const token = req.header('Authorization').replace('Bearer ', '')
-            //validate header
+
+        //validate header
         const decoded = jwt.verify(token, 'seriesofcharacters')
-            //find associated user
+
+        //find associated user
         const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
 
         if (!user) {
