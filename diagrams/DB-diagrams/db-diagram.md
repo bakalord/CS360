@@ -485,7 +485,7 @@ Child field(s):
 }
 ```
 
-##### 2.1.2.2.6 **users** JSON data
+##### 2.1.2.2.6 **users** example JSON data
 
 ```
 {
