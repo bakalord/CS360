@@ -2,8 +2,6 @@
 
 ### <a id="documentation-body"></a>
 
-![Hackolade image](/db-diagram/image1.png?raw=true)
-
 MongoDB Physical Model
 ----------------------
 
@@ -11,17 +9,15 @@ MongoDB Physical Model
 
 Model name: New Model
 
-Author:
+Author: Nick DeMarco
 
-Version:
+Version: 1
 
-File name:
+File name: db-diagram.md
 
-File path:
+File path: 
 
 Printed On: Sun Oct 25 2020 18:16:38 GMT-0400 (Eastern Daylight Time)
-
-Created with: [Hackolade](https://hackolade.com/) - Visual data modeling for NoSQL and multimodel databases
 
 ### <a id="contents"></a>
 
@@ -44,7 +40,6 @@ Created with: [Hackolade](https://hackolade.com/) - Visual data modeling for NoS
 
 ##### 1.1.1 **New Model** Entity Relationship Diagram
 
-![Hackolade image](/db-diagram/image2.png?raw=true)
 
 ##### 1.1.2 **New Model** Properties
 
@@ -72,7 +67,6 @@ Created with: [Hackolade](https://hackolade.com/) - Visual data modeling for NoS
 
 ##### 2.1.2.1.1 **tasks** Tree Diagram
 
-![Hackolade image](/db-diagram/image4.png?raw=true)
 
 ##### 2.1.2.1.2 **tasks** Properties
 
@@ -86,7 +80,6 @@ Created with: [Hackolade](https://hackolade.com/) - Visual data modeling for NoS
 
 ##### 2.1.2.1.3.1.1 **\_id** Tree Diagram
 
-![Hackolade image](/db-diagram/image5.png?raw=true)
 
 ##### 2.1.2.1.3.1.2 **\_id** properties
 
@@ -96,7 +89,6 @@ Created with: [Hackolade](https://hackolade.com/) - Visual data modeling for NoS
 
 ##### 2.1.2.1.3.2.1 **completed** Tree Diagram
 
-![Hackolade image](/db-diagram/image6.png?raw=true)
 
 ##### 2.1.2.1.3.2.2 **completed** properties
 
@@ -106,7 +98,6 @@ Created with: [Hackolade](https://hackolade.com/) - Visual data modeling for NoS
 
 ##### 2.1.2.1.3.3.1 **description** Tree Diagram
 
-![Hackolade image](/db-diagram/image7.png?raw=true)
 
 ##### 2.1.2.1.3.3.2 **description** properties
 
@@ -116,7 +107,6 @@ Created with: [Hackolade](https://hackolade.com/) - Visual data modeling for NoS
 
 ##### 2.1.2.1.3.4.1 **owner** Tree Diagram
 
-![Hackolade image](/db-diagram/image8.png?raw=true)
 
 ##### 2.1.2.1.3.4.2 **owner** properties
 
@@ -126,7 +116,6 @@ Created with: [Hackolade](https://hackolade.com/) - Visual data modeling for NoS
 
 ##### 2.1.2.1.3.5.1 **createdAt** Tree Diagram
 
-![Hackolade image](/db-diagram/image9.png?raw=true)
 
 ##### 2.1.2.1.3.5.2 **createdAt** properties
 
@@ -136,7 +125,6 @@ Created with: [Hackolade](https://hackolade.com/) - Visual data modeling for NoS
 
 ##### 2.1.2.1.3.6.1 **updatedAt** Tree Diagram
 
-![Hackolade image](/db-diagram/image10.png?raw=true)
 
 ##### 2.1.2.1.3.6.2 **updatedAt** properties
 
@@ -146,7 +134,6 @@ Created with: [Hackolade](https://hackolade.com/) - Visual data modeling for NoS
 
 ##### 2.1.2.1.3.7.1 **\_\_v** Tree Diagram
 
-![Hackolade image](/db-diagram/image11.png?raw=true)
 
 ##### 2.1.2.1.3.7.2 **\_\_v** properties
 
@@ -284,7 +271,6 @@ db.tasks.createIndex(
 
 ##### 2.1.2.2.1 **users** Tree Diagram
 
-![Hackolade image](/db-diagram/image12.png?raw=true)
 
 ##### 2.1.2.2.2 **users** Properties
 
@@ -298,7 +284,6 @@ db.tasks.createIndex(
 
 ##### 2.1.2.2.3.1.1 **\_id** Tree Diagram
 
-![Hackolade image](/db-diagram/image13.png?raw=true)
 
 ##### 2.1.2.2.3.1.2 **\_id** properties
 
@@ -308,7 +293,6 @@ db.tasks.createIndex(
 
 ##### 2.1.2.2.3.2.1 **name** Tree Diagram
 
-![Hackolade image](/db-diagram/image14.png?raw=true)
 
 ##### 2.1.2.2.3.2.2 **name** properties
 
@@ -318,8 +302,6 @@ db.tasks.createIndex(
 
 ##### 2.1.2.2.3.3.1 **email** Tree Diagram
 
-![Hackolade image](/db-diagram/image15.png?raw=true)
-
 ##### 2.1.2.2.3.3.2 **email** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>email</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td>true</td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Format</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Sample</td><td>nick@example.com</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
@@ -328,7 +310,6 @@ db.tasks.createIndex(
 
 ##### 2.1.2.2.3.4.1 **password** Tree Diagram
 
-![Hackolade image](/db-diagram/image16.png?raw=true)
 
 ##### 2.1.2.2.3.4.2 **password** properties
 
@@ -338,7 +319,6 @@ db.tasks.createIndex(
 
 ##### 2.1.2.2.3.5.1 **tokens** Tree Diagram
 
-![Hackolade image](/db-diagram/image17.png?raw=true)
 
 ##### 2.1.2.2.3.5.2 **tokens** Hierarchy
 
@@ -356,8 +336,6 @@ Child field(s):
 
 ##### 2.1.2.2.3.6.1 **\[0\]** Tree Diagram
 
-![Hackolade image](/db-diagram/image18.png?raw=true)
-
 ##### 2.1.2.2.3.6.2 **\[0\]** Hierarchy
 
 Parent field: **tokens**
@@ -374,7 +352,6 @@ Child field(s):
 
 ##### 2.1.2.2.3.7.1 **\_id** Tree Diagram
 
-![Hackolade image](/db-diagram/image19.png?raw=true)
 
 ##### 2.1.2.2.3.7.2 **\_id** properties
 
@@ -384,7 +361,6 @@ Child field(s):
 
 ##### 2.1.2.2.3.8.1 **token** Tree Diagram
 
-![Hackolade image](/db-diagram/image20.png?raw=true)
 
 ##### 2.1.2.2.3.8.2 **token** properties
 
@@ -394,7 +370,6 @@ Child field(s):
 
 ##### 2.1.2.2.3.9.1 **createdAt** Tree Diagram
 
-![Hackolade image](/db-diagram/image21.png?raw=true)
 
 ##### 2.1.2.2.3.9.2 **createdAt** properties
 
@@ -404,7 +379,6 @@ Child field(s):
 
 ##### 2.1.2.2.3.10.1 **updatedAt** Tree Diagram
 
-![Hackolade image](/db-diagram/image22.png?raw=true)
 
 ##### 2.1.2.2.3.10.2 **updatedAt** properties
 
@@ -414,7 +388,6 @@ Child field(s):
 
 ##### 2.1.2.2.3.11.1 **\_\_v** Tree Diagram
 
-![Hackolade image](/db-diagram/image23.png?raw=true)
 
 ##### 2.1.2.2.3.11.2 **\_\_v** properties
 
