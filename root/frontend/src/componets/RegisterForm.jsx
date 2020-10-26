@@ -46,42 +46,28 @@ class RegisterForm extends React.Component {
     }
 
     render() {
-        return ( <
-            div >
-            <
-            form onSubmit = { this.handleSubmit } >
-            <
-            label > Name:
-            <
-            input type = "text"
-            value = { this.state.name }
-            onChange = { this.setName }
-            /> <
-            /label> <
-            label > Email:
-            <
-            input type = "text"
-            value = { this.state.email }
-            onChange = { this.setEmail }
-            /> <
-            /label> <
-            label > Password:
-            <
-            input type = "password"
-            value = { this.state.password }
-            onChange = { this.setPassword }
-            /> <
-            /label> <
-            label > Confirm Password:
-            <
-            input type = "password" / >
-            <
-            /label> <
-            input type = "submit"
-            value = "Submit" / >
-            <
-            /form> <
-            /div>
+        return ( 
+        <div >
+            <form onSubmit = { this.handleSubmit } >
+                <label > 
+                    Name: <input type = "text" value = { this.state.name } onChange = { this.setName }/> 
+                </label > 
+                
+                <label >
+                    Email: <input type = "text" value = { this.state.email } onChange = { this.setEmail }/> 
+                </label> 
+                
+                <label >
+                    Password: <input type = "password" value = { this.state.password } onChange = { this.setPassword }/> 
+                </label>
+                
+                <label >
+                    Confirm Password: <input type = "password" />
+                </label> 
+                
+                <input type = "submit" value = "Submit" />
+            </form> 
+        </div >
         )
     }
 }
