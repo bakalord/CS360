@@ -1,7 +1,10 @@
 const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
 require('./db/mongoose')
 const userRouter = require('./routers/user')
 const taskRouter = require('./routers/task')
+
 
 const app = express()
 
@@ -9,7 +12,12 @@ const app = express()
 const port = process.env.PORT || 3000
 
 //this tells the app to automatically parse incoming JSON to an object
-app.use(express.json())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
+
+app.use(cors())
 
 app.use(userRouter)
 app.use(taskRouter)

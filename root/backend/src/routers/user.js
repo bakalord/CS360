@@ -4,7 +4,7 @@ const router = new express.Router()
 const auth = require('../middleware/auth')
 
 //sign up user
-router.post('/users', async(req, res) => {
+router.route('/users'.post(async(req, res) => {
     const user = new User(req.body)
 
     try {
@@ -14,7 +14,7 @@ router.post('/users', async(req, res) => {
     } catch (e) {
         res.status(400).send(e)
     }
-})
+}))
 
 // log in
 router.post('/users/login', async(req, res) => {
