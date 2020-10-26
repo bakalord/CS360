@@ -5,10 +5,13 @@ import AboutUs from './pages/AboutUs'
 import Register from './pages/Register'
 import './styles.css'
 
+
 class App extends Component
 {
-    render() {
+    render() 
+    {
         const App = () => (
+            
             <div>
                 <Switch>
                     <Route exact path='/' component={Home}/>

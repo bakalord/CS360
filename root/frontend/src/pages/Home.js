@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {State} from 'react'
 import {Link} from 'react-router-dom'
 import Header from '../componets/Header'
+import Axios from 'axios'
 
 class Home extends React.Component
 {

@@ -11,6 +11,9 @@ class RegisterForm extends React.Component
             email: "",
             password:"",
          };
+         this.state = {
+             users: []
+         };
 
          this.setName = this.setName.bind(this);
          this.setEmail = this.setEmail.bind(this);
@@ -28,15 +31,14 @@ class RegisterForm extends React.Component
         this.setState({password: event.target.value});
     }
     handleSubmit(event){
-        //console.log(this.state);
-        event.preventDefault()
+        console.log(this.state);
 
         const person = {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password
         };
-        Axios.post('http://localhost:4000/users', person)
+        Axios.post('/http://localhost:3000/contact', person)
           .then(function (response) {
             console.log(response);
           })
@@ -44,11 +46,18 @@ class RegisterForm extends React.Component
             console.log(error);
           });
 
-          this.setState({name: "", email:"", password:""})
     }
+
+      componentDidMount() {
+        Axios.get("users.json").then((response) => {
+          this.setState({ users: response.data });
+        });
+      }
+   
 
     render()
     {
+        const {users} = this.state;
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -66,6 +75,23 @@ class RegisterForm extends React.Component
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
+                <div>
+        <ul>
+          {users.map((user) => (
+            <li>
+              <p>
+                <strong>Name:</strong> {user.name}
+              </p>
+              <p>
+                <strong>Email:</strong> {user.email}
+              </p>
+              <p>
+                <strong>City:</strong> {user.address.city}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
             </div>
         )
     }
