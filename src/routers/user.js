@@ -1,7 +1,7 @@
 const express = require('express')
 const User = require('../models/users')
 const router = new express.Router()
-const auth = require('../middleware/authentication')
+const auth = require('../middleware/auth')
 
 //sign up user
 router.post('/users', async(req, res) => {
@@ -32,6 +32,7 @@ router.post('/users/logout', auth, async(req, res) => {
     try {
         //removes token from the token array
         req.user.tokens = req.user.tokens.filter((token) => {
+
             //walk array of tokens
             //if token in array not equal to token logging out, keep it
             return token.token !== req.token
@@ -63,6 +64,7 @@ router.get('/users/me', auth, async(req, res) => {
 
 //update user info
 router.patch('/users/me', auth, async(req, res) => {
+
     //array of strings of object properties
     //this is passed in from the front-end depending on what the user is trying to update
     const updates = Object.keys(req.body)
