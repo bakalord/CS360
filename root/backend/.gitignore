@@ -1,2 +1,8 @@
+#Node modules
 node_modules/
+
+#Directory for testing
 playground/
+
+#Umlet docs
+*.uxf
