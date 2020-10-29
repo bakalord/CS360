@@ -36,7 +36,7 @@ class RegisterForm extends React.Component {
         };
         Axios.post('http://localhost:5000/users', person)
             .then(function(response) {
-                console.log(response);
+                console.log(response)
             })
             .catch(function(error) {
                 console.log(error);
