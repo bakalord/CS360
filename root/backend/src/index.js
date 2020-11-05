@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 require('./db/mongoose')
 const userRouter = require('./routers/user')
 const taskRouter = require('./routers/task')
+const goalRouter = require('./routers/goal')
 
 
 const app = express()
@@ -21,6 +22,7 @@ app.use(cors())
 
 app.use(userRouter)
 app.use(taskRouter)
+app.use(goalRouter)
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
